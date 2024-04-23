@@ -16,9 +16,9 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 def check_bound(obj_rct:pg.Rect) -> tuple[bool, bool]:
     """
-    こうかとんRect,または,爆弾Rectの画面内外判定用の関数
-    引数:こうかとんRect,または,爆弾Rect
-    戻り値:横方向判定結果,縦方向判定結果（True:画面内/False:画面外）
+    こうかとんRect，または，爆弾Rectの画面内外判定用の関数
+    引数：こうかとんRect，または，爆弾Rect
+    戻り値：横方向判定結果，縦方向判定結果（True：画面内／False：画面外）
     """
     yoko, tate = True, True
     if obj_rct.left < 0 or WIDTH < obj_rct.right: 
@@ -49,7 +49,10 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: 
-                return
+                return 
+        if kk_rct.colliderect(bd_rct):  # こうかとんと爆弾がぶつかったら
+            print("Game Over")
+            return
         screen.blit(bg_img, [0, 0]) 
 
         # こうかとんの移動と表示
