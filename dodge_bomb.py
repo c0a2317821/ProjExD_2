@@ -13,17 +13,18 @@ DELTA = {  # 移動量辞書（押下キー：移動量タプル）
 }
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-def init_kk_imgs() -> "dict[tuple[int, int], pg.Surface]":
+def init_kk_imgs() -> "dict[tuple[int, int], pg.Surface]": 
+    # 移動量の合計値タプルをキーに。対応する方向の画像Surfaceを値とした移動量辞書を返す
 
-    kk_img0 = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 2.0)
-    kk_img = pg.transform.flip(kk_img0, True, False)  # デフォルトのこうかとん
+    kk_img1 = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 2.0)
+    kk_img = pg.transform.flip(kk_img1, True, False)  # デフォルトのこうかとん
     return {
         (+5, 0): kk_img, #Right
         (+5, -5): pg.transform.rotozoom(kk_img, 45, 2.0), #UpperLeft
         (0, -5): pg.transform.rotozoom(kk_img, 90, 2.0), #Upper
-        (-5, -5): pg.transform.rotozoom(kk_img0, -45, 2.0), #UpperRight
-        (-5, 0): kk_img0, #Left
-        (-5, +5): pg.transform.rotozoom(kk_img0, 45, 2.0), #LowerLeft
+        (-5, -5): pg.transform.rotozoom(kk_img1, -45, 2.0), #UpperRight
+        (-5, 0): kk_img1, #Left
+        (-5, +5): pg.transform.rotozoom(kk_img1, 45, 2.0), #LowerLeft
         (0, +5): pg.transform.rotozoom(kk_img, -90, 2.0), #Under
         (+5, +5): pg.transform.rotozoom(kk_img, -45, 2.0), #LowerRight
         }
